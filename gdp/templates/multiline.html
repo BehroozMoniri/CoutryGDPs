@@ -1,0 +1,58 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<p class="lead">GDP by country</p>
+
+    <div class="row">
+        <div id="linechart" class="col-10">
+            {% include 'partials/gdp-bar.html' %}
+        </div>
+        <div class="col-2">
+                <label>County 1</label>
+                <select id="country1" 
+                        class="custom-select" 
+                        name="country1"
+                        autocomplete="off"
+                        hx-get = "{% url 'multilinechart' %}"
+                        hx-target = "#linechart"
+                >
+ 
+                    {% for c in countries %}
+                        <option value="{{c}}" 
+                        {% if country1 == c %} selected {% endif %}>{{c}}</option>
+                    {% endfor %}
+                </select>
+                <label>County 2</label>
+                <select id="country2" 
+                        class="custom-select" 
+                        name="country2"
+                        autocomplete="off"
+                        hx-get = "{% url 'multilinechart' %}"
+                        hx-target = "#linechart"
+                >
+
+                    {% for c in countries %}
+                        <option value="{{c}}" 
+                        {% if country2 == c %} selected {% endif %}>{{c}}</option>
+                    {% endfor %}
+                </select>
+                <label>County 3</label>
+                <select id="country3" 
+                        class="custom-select" 
+                        name="country3"
+                        autocomplete="off"
+                        hx-get = "{% url 'multilinechart' %}"
+                        hx-target = "#linechart"
+                >
+
+                    {% for c in countries %}
+                        <option value="{{c}}" 
+                        {% if country3 == c %} selected {% endif %}>{{c}}</option>
+                    {% endfor %}
+                </select>
+    
+           
+        </div>
+    </div>
+
+{% endblock %}
